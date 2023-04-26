@@ -7,16 +7,16 @@ const Login = () => {
     <div className="h-[896px] px-[24px] py-[25px] flex flex-col justify-end">
       <div>
         <p className="font-[800] text-[#8A8B7A]">HI FELLA 👋🏻</p>
-        <h3 className="font-[800]">Welcome Back</h3>
+        <h3 className="font-[800] text-[28px]">Welcome Back</h3>
       </div>
       <div className="flex flex-col mt-[45px]">
-        <button className="border border-[#8A8B7A] rounded-md h-[60px] mb-[20px] flex items-center gap-8 px-[32px]">
+        <button className="border border-[#8A8B7A] rounded-md h-[60px] mb-[20px] flex items-center gap-9 px-[32px]">
           <span>
             <FcGoogle size={28} />
           </span>{" "}
           <p className="text-[16px]">Login with Google</p>
         </button>
-        <button className="border border-[#8A8B7A] rounded-md h-[60px] flex items-center gap-8 px-[32px]">
+        <button className="border border-[#8A8B7A] rounded-md h-[60px] flex items-center gap-7 px-[32px]">
           <span>
             <FaFacebook size={28} color="#4267B2" />
           </span>
@@ -34,7 +34,7 @@ const Login = () => {
             name="email"
             id="email"
             placeholder="Eg. jamesburnes@gmail.com"
-            className="outline-none bg-[#F6F6F5] rounded-md h-[56px] px-2 mt-[8px]"
+            className="outline-none bg-[#F6F6F5] rounded-md h-[56px] px-3 mt-[8px]"
           />
         </div>
         <div className="flex flex-col mt-[25px]">
@@ -45,7 +45,7 @@ const Login = () => {
             type="text"
             name="password"
             id="password"
-            className="outline-none bg-[#F6F6F5] rounded-md h-[56px] px-2 mt-[8px]"
+            className="outline-none bg-[#F6F6F5] rounded-md h-[56px] px-3 mt-[8px]"
           />
         </div>
         <button className="bg-[#CED55B] h-[60px] w-full rounded-md mt-[42px]">

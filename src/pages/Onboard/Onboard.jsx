@@ -13,7 +13,7 @@ const Onboard = () => {
         </p>
       </div>
       <button className="z-10 bg-[#CED55B] rounded-md h-[60px] w-[100%] mt-[27px] mb-[20px]">Browse Shop</button>
-      <Link to="/login" className="text-white z-1">
+      <Link to="/login" className="text-white z-10">
         Login
       </Link>
     </div>
