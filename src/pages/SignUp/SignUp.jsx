@@ -81,7 +81,7 @@ const SignUp = () => {
         <Link to="" className="text-[#8A8B7A] text-[16px]">
           Don’t have an account?
         </Link>
-        <Link to="/register" className="text-[#BA5C3D]">
+        <Link to="/login" className="text-[#BA5C3D]">
           Login
         </Link>
       </div>
