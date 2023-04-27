@@ -6,6 +6,8 @@ import SignUp from './pages/SignUp/SignUp'
 import Home from './pages/Home/Home'
 import ViewItem from './pages/ViewItem/ViewItem'
 import Search from './pages/Search/Search'
+import Workspaces from './pages/Workspaces/Workspaces'
+
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/viewitem' element={<ViewItem />} />
         <Route path='/search' element={<Search />} />
+        <Route path='/workspaces' element={<Workspaces />} />
       </Routes>
    </div>
   )

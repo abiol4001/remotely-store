@@ -1,6 +1,6 @@
 // component import
 import NewArrivals from "../../components/newArrivals/NewArrivals";
-import Workspaces from "../../components/Workspaces/Workspaces";
+import WorkspacesComp from "../../components/Workspaces/WorkspacesComp";
 
 // data import
 import newArrivalsData from "../../components/newArrivals/newArrivalsData";
@@ -75,7 +75,7 @@ const Home = () => {
         </div>
         <div className=" mt-5 flex gap-2 overflow-hidden">
           {workspacesData.map((item) => (
-            <Workspaces key={item.suggested} item={item} />
+            <WorkspacesComp key={item.suggested} item={item} />
           ))}
         </div>
       </div>

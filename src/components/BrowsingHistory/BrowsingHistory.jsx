@@ -2,7 +2,7 @@
 import React from 'react'
 import { AiFillStar } from 'react-icons/ai';
 
-const BrowsingHistory = ( {item} ) => {
+const BrowsingHistory = ( { item } ) => {
   return (
     <div className="w-[158px] h-[190px] rounded-md">
       <div>

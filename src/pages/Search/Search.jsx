@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 // components import
+// import ReactSlider from "react-slider";
+
 // import BrowsingHistory from '../../components/BrowsingHistory/BrowsingHistory';
 
 // data import
@@ -11,17 +13,34 @@ import { Link } from "react-router-dom";
 import { AiFillStar, AiOutlineClose } from "react-icons/ai";
 import peopleSearch from "../../components/PeopleSearch/peopeSearch";
 import NewArrivals from "../../components/newArrivals/NewArrivals";
+import Filter from "../../components/Filter/Filter";
+
+
+
+const MIN = 10;
+const MAX = 2000;
+
 
 const Search = () => {
+
   const [searchHistory, setSearchHistory] = useState([
     "Phone Tripod-Stand",
     "Fitness watch",
     "USB microphone recording",
   ]);
 
+  const [values, setValues] = useState([MIN, MAX])
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  
   return (
-    <>
-      <div className="py-[31px] px-[24px]">
+    <div className="h-[822px] py-[31px] px-[24px]">
+      <div
+        className={`${
+          isVisible ? "hidden" : "block"
+        }`}
+      >
         <div className="flex justify-between items-center">
           <button>
             <MdOutlineArrowBackIosNew size={22} />
@@ -35,7 +54,10 @@ const Search = () => {
             placeholder="Search product name"
             className="border border-[#C9CEDA] rounded-[5px] h-[50px] w-[100%] px-3 outline-none"
           />
-          <button className="absolute right-3 top-[30%]">
+          <button
+            onClick={() => setIsVisible(!isVisible)}
+            className="absolute right-3 top-[30%]"
+          >
             <img src="setting.svg" alt="" />
           </button>
         </div>
@@ -111,45 +133,10 @@ const Search = () => {
       </div>
 
       {/* Filter pop-up */}
-      <div className="h-[822px] py-[31px] px-[24px]">
-        <div className="flex justify-between mb-[21px]">
-          <h4 className="text-[21px] font-[800]">Filter by</h4>
-          <button>
-            <AiOutlineClose />
-          </button>
-        </div>
-        <div>
-          <label htmlFor="price-range" className="text-[#8A8B7A] text-[16px]">
-            Price
-          </label>
-          <input
-            type="range"
-            name="price-range"
-            id="price-range"
-            min={0}
-            max={5000}
-            className="cursor-pointer w-full bg-gray-300 rounded-lg appearance-none h-2 thumb:bg-[#F7906D] thumb:shadow-md"
-          />
-        </div>
-
-        <div>
-          <p className="text-[#8A8B7A] text-[16px] mt-[24px]">Product type</p>
-        </div>
-
-        <div>
-          <p className="text-[#8A8B7A] text-[16px] mt-[24px]">Brand</p>
-        </div>
-
-        <div className="flex justify-between mt-[20px]">
-          <button className="h-[42px] w-[150px] rounded-md bg-[#F4F5F7]">
-            Cancel
-          </button>
-          <button className="h-[42px] w-[150px] rounded-md bg-[#CED55B]">
-            Apply
-          </button>
-        </div>
+      <div className={`${isVisible ? "block" : "hidden"}`}>
+        <Filter visibility={() => setIsVisible(!isVisible)} />
       </div>
-    </>
+    </div>
   );
 };
 
