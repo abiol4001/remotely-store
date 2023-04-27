@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { AiFillStar } from "react-icons/ai";
 
@@ -16,7 +18,7 @@ const NewArrivals = ( {item} ) => {
           <p className="text-[#DDDDDB] text-[12px]">{item.rating}</p>
           <AiFillStar color="#F2C94C" />
         </div>
-        <p className="text-[#BA5C3D] text-[16px] font-[900]">{`$${item.price}`}</p>
+        <p className="text-[#BA5C3D] text-[16px] font-[900]">{`$${item.price}.00`}</p>
       </div>
     </div>
   );

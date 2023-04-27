@@ -19,13 +19,15 @@ const Home = () => {
           <img src="profile.png" alt="profile-picture" />
         </div>
         <div>
-          <button className="border border-gray-400 p-2 rounded-[50%] mr-2">
-            <img
-              src="search.svg"
-              alt="serach-icon"
-              className="w-[20px] h-[20px]"
-            />
-          </button>
+          <Link to="/search">
+            <button className="border border-gray-400 p-2 rounded-[50%] mr-2">
+              <img
+                src="search.svg"
+                alt="serach-icon"
+                className="w-[20px] h-[20px]"
+              />
+            </button>
+          </Link>
           <button className="border border-gray-400 p-2 rounded-[50%]">
             <img
               src="wishlist.svg"
@@ -42,7 +44,7 @@ const Home = () => {
         </p>
         <div className="flex items-center">
           <p className="text-[#A6A798] text-[12px]">Hughlan Workspaces</p>
-          <div className="h-1.5 w-1.5 bg-[#A6A798] rounded-full"></div>
+          <div className="h-1 w-1 bg-[#A6A798] rounded-full"></div>
           <p className="text-[#DDDDDB] text-[12px]">4.8</p>
           <AiFillStar color="#F2C94C" />
         </div>
@@ -72,7 +74,7 @@ const Home = () => {
           </Link>
         </div>
         <div className=" mt-5 flex gap-2 overflow-hidden">
-          {workspacesData.map(item => (
+          {workspacesData.map((item) => (
             <Workspaces key={item.suggested} item={item} />
           ))}
         </div>
@@ -89,7 +91,7 @@ const Home = () => {
           </Link>
         </div>
         <div className="mt-4 h-[240px] overflow-hidden flex flex-col gap-3">
-          {newArrivalsData.map(item => (
+          {newArrivalsData.map((item) => (
             <NewArrivals key={item.name} item={item} />
           ))}
         </div>

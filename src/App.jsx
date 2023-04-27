@@ -5,6 +5,7 @@ import Login from './pages/Login/Login'
 import SignUp from './pages/SignUp/SignUp'
 import Home from './pages/Home/Home'
 import ViewItem from './pages/ViewItem/ViewItem'
+import Search from './pages/Search/Search'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/register' element={<SignUp />} />
         <Route path='/home' element={<Home />} />
         <Route path='/viewitem' element={<ViewItem />} />
+        <Route path='/search' element={<Search />} />
       </Routes>
    </div>
   )

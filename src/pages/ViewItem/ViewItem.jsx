@@ -1,29 +1,31 @@
-import React from 'react'
-
 // icon import
-import { MdOutlineArrowBackIosNew } from 'react-icons/md'
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
-import workspacesData from '../../components/Workspaces/workspacesData';
+import { CiHeart } from "react-icons/ci";
+// component import
+import RelatedItem from "../../components/relatedItems/RelatedItem";
 
+// data import
+import workspacesData from "../../components/Workspaces/workspacesData";
+import relatedItems from "../../components/relatedItems/relatedItems";
 
 const ViewItem = () => {
-
-    const totalPictures = [
-      {
-        id: 1,
-        image: "chair.png",
-      },
-      {
-        id: 2,
-        image: "chair2.png",
-      },
-      {
-        id: 3,
-        image: "chair3.png",
-      },
-    ];
+  const totalPictures = [
+    {
+      id: 1,
+      image: "chair.png",
+    },
+    {
+      id: 2,
+      image: "chair2.png",
+    },
+    {
+      id: 3,
+      image: "chair3.png",
+    },
+  ];
   return (
-    <div className="">
+    <div className="pb-4">
       <div className="bg-[#F4F5F7] h-[421px] py-[22px] px-[24px]">
         <div className="flex justify-between items-center">
           <button>
@@ -52,7 +54,15 @@ const ViewItem = () => {
         </div>
       </div>
 
-      <div className="px-[18px] py-[18px]">
+      <div className="px-[18px] py-[18px] relative">
+        <div className="flex items-center justify-between gap-6 fixed top-[70%]">
+          <button className="bg-[#CED55B] h-[60px] w-[289px] rounded-md">
+            Add to cart
+          </button>
+          <button className="bg-gray-100 p-4 rounded-full">
+            <CiHeart size={25} />
+          </button>
+        </div>
         <div className="flex gap-3 items-center mt-3">
           <div>
             <h4 className="text-[21px] font-[800]">
@@ -107,14 +117,19 @@ const ViewItem = () => {
           </div>
         </div>
 
-        <div>
+        <div className="mt-[24px]">
           <h5 className="text-[12px] text-[#040B14] font-[800] mb-[16px]">
             RELATED ITEMS
           </h5>
+          <div className="flex gap-3 overflow-hidden">
+            {relatedItems.map((item) => (
+              <RelatedItem key={item.name} item={item} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default ViewItem
+export default ViewItem;
