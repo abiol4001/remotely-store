@@ -11,6 +11,8 @@ import Workspace from './pages/Workspaces/Workspace'
 import Scanning from './pages/Scanning/Scanning'
 import ScannedInfo from './pages/Scanning/ScannedInfo'
 import Cart from './pages/Cart/Cart'
+import Checkout from './pages/Checkout/Checkout'
+import Done from './pages/Done/Done'
 
 
 function App() {
@@ -24,6 +26,9 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/viewitem' element={<ViewItem />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/order-confirmed' element={<Done />} />
+        <Route path='/orders' element={<Done />} />
         <Route path='/search' element={<Search />} />
         <Route path='/scanning' element={<Scanning />}/>
         <Route path='/scannedinfo' element={<ScannedInfo />}/>
