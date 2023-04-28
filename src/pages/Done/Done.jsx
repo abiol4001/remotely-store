@@ -6,7 +6,7 @@ const Done = () => {
     <div className="py-[31px] px-[24px] h-[896px] flex flex-col">
       <p className="text-center mt-24 text-[21px] font-[800] ">All done</p>
       <div
-        className="h-[282px] w-[382px] mt-[144px] bg-cover bg-center mx-auto flex justify-center items-center"
+        className="h-[282px] max-w-[382px] min-w-[332px] mt-[144px] bg-cover bg-center mx-auto flex justify-center items-center"
         style={{ backgroundImage: `url(${"/order-confirmed.png"})` }}
       >
         <img src="box.png" alt="" className="h-[154px] w-[154px]" />

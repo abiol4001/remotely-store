@@ -1,11 +1,13 @@
 import React, { useState, } from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { Link, } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 
 const Cart = () => {
-  function handleGoBack() {
-    window.history.back();
-  }
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   const [count, setCount] = useState(0);
   return (

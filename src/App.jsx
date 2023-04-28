@@ -13,6 +13,7 @@ import ScannedInfo from './pages/Scanning/ScannedInfo'
 import Cart from './pages/Cart/Cart'
 import Checkout from './pages/Checkout/Checkout'
 import Done from './pages/Done/Done'
+import Orders from './pages/Orders/Orders'
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/order-confirmed' element={<Done />} />
-        <Route path='/orders' element={<Done />} />
+        <Route path='/orders' element={<Orders />} />
         <Route path='/search' element={<Search />} />
         <Route path='/scanning' element={<Scanning />}/>
         <Route path='/scannedinfo' element={<ScannedInfo />}/>

@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import Filter from "../../components/Filter/Filter";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { developerItemsData } from "../../components/youtubers/youtubersData";
 
 const Workspace = () => {
   const [isVisible, setIsVisible] = useState(false);
 
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="py-[31px] px-[24px]">
       <div className={`${isVisible ? "hidden" : "block"} w-full relative`}>
-        <button>
+        <button onClick={handleGoBack}>
           <MdOutlineArrowBackIosNew size={22} />
         </button>
         <div className="flex justify-between items-start mt-5">

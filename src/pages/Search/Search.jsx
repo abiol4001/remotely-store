@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 // components import
+import peopleSearch from "../../components/PeopleSearch/peopeSearch";
+import NewArrivals from "../../components/newArrivals/NewArrivals";
+import Filter from "../../components/Filter/Filter";
 // import ReactSlider from "react-slider";
-
-// import BrowsingHistory from '../../components/BrowsingHistory/BrowsingHistory';
 
 // data import
 import browsingHistoryData from "../../components/BrowsingHistory/browsingHistory";
 
 // icons import
 import { MdKeyboardArrowRight, MdOutlineArrowBackIosNew } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillStar, AiOutlineClose } from "react-icons/ai";
-import peopleSearch from "../../components/PeopleSearch/peopeSearch";
-import NewArrivals from "../../components/newArrivals/NewArrivals";
-import Filter from "../../components/Filter/Filter";
 
 
 
@@ -29,6 +27,12 @@ const Search = () => {
     "USB microphone recording",
   ]);
 
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   const [values, setValues] = useState([MIN, MAX])
 
   const [isVisible, setIsVisible] = useState(false);
@@ -42,7 +46,7 @@ const Search = () => {
         }`}
       >
         <div className="flex justify-between items-center">
-          <button>
+          <button onClick={handleGoBack}>
             <MdOutlineArrowBackIosNew size={22} />
           </button>
           <p>Search</p>

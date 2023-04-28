@@ -1,11 +1,13 @@
 import React from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Checkout = () => {
-  function handleGoBack() {
-    window.history.back();
-  }
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="py-[31px] px-[24px]">
