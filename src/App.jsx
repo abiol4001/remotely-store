@@ -7,6 +7,10 @@ import Home from './pages/Home/Home'
 import ViewItem from './pages/ViewItem/ViewItem'
 import Search from './pages/Search/Search'
 import Workspaces from './pages/Workspaces/Workspaces'
+import Workspace from './pages/Workspaces/Workspace'
+import Scanning from './pages/Scanning/Scanning'
+import ScannedInfo from './pages/Scanning/ScannedInfo'
+import Cart from './pages/Cart/Cart'
 
 
 function App() {
@@ -19,8 +23,12 @@ function App() {
         <Route path='/register' element={<SignUp />} />
         <Route path='/home' element={<Home />} />
         <Route path='/viewitem' element={<ViewItem />} />
+        <Route path='/cart' element={<Cart />} />
         <Route path='/search' element={<Search />} />
-        <Route path='/workspaces' element={<Workspaces />} />
+        <Route path='/scanning' element={<Scanning />}/>
+        <Route path='/scannedinfo' element={<ScannedInfo />}/>
+        <Route path='/workspaces' element={<Workspaces />}/>
+        <Route path='/workspaces/developer' element={<Workspace />}/>
       </Routes>
    </div>
   )

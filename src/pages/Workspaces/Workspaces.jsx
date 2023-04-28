@@ -2,23 +2,29 @@ import React, { useState } from 'react'
 import { MdKeyboardArrowRight, MdOutlineArrowBackIosNew } from 'react-icons/md';
 import Filter from '../../components/Filter/Filter';
 import { AiFillStar } from 'react-icons/ai';
-import { Link, NavLink } from 'react-router-dom';
-import browsingHistoryData from '../../components/BrowsingHistory/browsingHistory';
+import { Link, useParams, } from 'react-router-dom';
+
 import youtubersData from '../../components/youtubers/youtubersData';
 import workspacesData from '../../components/Workspaces/workspacesData';
-import newArrivalsData, { yourHistoryData } from '../../components/newArrivals/newArrivalsData';
+import  { yourHistoryData } from '../../components/newArrivals/newArrivalsData';
 import NewArrivals from '../../components/newArrivals/NewArrivals';
 
 
 
 const Workspaces = () => {
 
+  const { userId } = useParams();
+  const userItem = workspacesData.find(
+    (item) => item.user.toLowerCase() === userId
+  );
+  
+
   const [isVisible, setIsVisible] = useState(false);
 
   const browseWorkspaces = ["Show all", "Developer", "Podcast creator", "Film making", "Photography" ]
 
   return (
-    <div className="py-[31px] px-[24px] w-[100%]">
+    <div className="py-[31px] px-[24px]">
       <div className={`${isVisible ? "hidden" : "block"} w-full relative`}>
         <div className="flex justify-between items-center">
           <button>
@@ -132,7 +138,8 @@ const Workspaces = () => {
           <p className="text-[12px] font-[800]">PEOPLE SEARCH FOR</p>
           <div>
             {workspacesData.map((item) => (
-              <div
+              <Link
+                to={`/workspaces/${item.user.toLowerCase()}`}
                 key={item.price}
                 className="h-[56px] w-full rounded-md mt-2 flex gap-4 mb-4"
               >
@@ -147,9 +154,11 @@ const Workspaces = () => {
                   <p className="text-[16px] font-[800]">{item.user}</p>
                   <p className="text-[#A6A798] text-[12px]">{`${item.suggested} suggested items`}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
+
+          
         </div>
 
         <div className="mt-[32px]">
@@ -161,7 +170,7 @@ const Workspaces = () => {
           </div>
         </div>
 
-        <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-4 right-1 flex items-center justify-center">
+        <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-4 flex items-center justify-center">
           <img src="cart.svg" alt="" />
         </button>
       </div>

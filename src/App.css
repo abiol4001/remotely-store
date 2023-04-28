@@ -9,5 +9,17 @@
 }
 
 input[type="checkbox"]:checked + label:before {
-    background-color: #A6A798;
+  background-color: #a6a798;
 }
+
+/* .gradient {
+  background: linear-gradient(
+    316.37deg,
+    rgba(4, 11, 20, 0.12) -5.28%,
+    rgba(4, 11, 20, 0.06) 53.52%,
+    rgba(4, 11, 20, 0.02) 109.3%,
+    rgba(4, 11, 20, 0.004) 121.63%
+  );
+  backdrop-filter: blur(5px);
+  transform: matrix(1, 0, 0, -1, 0, 0);
+} */
