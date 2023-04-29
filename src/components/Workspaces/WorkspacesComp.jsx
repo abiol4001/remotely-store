@@ -3,7 +3,7 @@ import React from 'react'
 
 const WorkspacesComp = ( {item} ) => {
   return (
-    <div className="bg-[#F4F5F7] h-[178px] w-[136px] rounded-md p-3 ">
+    <div className="bg-[#F4F5F7] h-[178px] w-[136px] rounded-lg p-3 ">
       <div className="w-[110px] h-[104px]">
         <img
           src={item.image}

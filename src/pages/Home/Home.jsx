@@ -1,17 +1,23 @@
 // component import
 import NewArrivals from "../../components/newArrivals/NewArrivals";
 import WorkspacesComp from "../../components/Workspaces/WorkspacesComp";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 // data import
 import newArrivalsData from "../../components/newArrivals/newArrivalsData";
 import workspacesData from "../../components/Workspaces/workspacesData";
 
+
 // icons import
 import { Link } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import responsive from "../../components/carouselResponsive/carouselResponsive";
 
 const Home = () => {
+
+  
   return (
     <div className=" px-[24px] py-[32px] flex flex-col relative">
       <div className="flex items-center justify-between mb-[32px]">
@@ -63,21 +69,34 @@ const Home = () => {
         />
       </div>
 
+      {/* Workspaces section of the page */}
       <div className="mt-6">
         <div className="flex items-center justify-between">
           <h4 className="text-[21px] font-[800]">Workspaces</h4>
-          <Link to="" className="flex items-center text-[#8A8B7A] text-[12px]">
+          <Link
+            to="/workspaces"
+            className="flex items-center text-[#8A8B7A] text-[12px]"
+          >
             See more{" "}
             <span>
               <MdKeyboardArrowRight size={25} />
             </span>
           </Link>
         </div>
-        <div className=" mt-5 flex gap-2 overflow-hidden">
+        <Carousel
+          swipeable={true}
+          draggable={true}
+          showDots={false}
+          responsive={responsive}
+          autoPlaySpeed={1000}
+          keyBoardControl={true}
+          itemClass="carousel-item-padding-40-px"
+          className=" mt-5 flex gap-2 overflow-hidden"
+        >
           {workspacesData.map((item) => (
             <WorkspacesComp key={item.suggested} item={item} />
           ))}
-        </div>
+        </Carousel>
       </div>
 
       <div className="mt-5">

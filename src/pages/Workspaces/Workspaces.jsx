@@ -2,22 +2,72 @@ import React, { useState } from 'react'
 import { MdKeyboardArrowRight, MdOutlineArrowBackIosNew } from 'react-icons/md';
 import Filter from '../../components/Filter/Filter';
 import { AiFillStar } from 'react-icons/ai';
-import { Link, useParams, } from 'react-router-dom';
+import { Link, useNavigate, useParams, } from 'react-router-dom';
 
 import youtubersData from '../../components/youtubers/youtubersData';
 import workspacesData from '../../components/Workspaces/workspacesData';
 import  { yourHistoryData } from '../../components/newArrivals/newArrivalsData';
 import NewArrivals from '../../components/newArrivals/NewArrivals';
+import Carousel from 'react-multi-carousel';
+import "react-multi-carousel/lib/styles.css";
 
 
 
 const Workspaces = () => {
 
-  const { userId } = useParams();
-  const userItem = workspacesData.find(
-    (item) => item.user.toLowerCase() === userId
-  );
-  
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+  const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 2.1,
+    // slidesToSlide: 2,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 2.1,
+    // slidesToSlide: 2,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2.1,
+    // slidesToSlide: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 2.1,
+    // slidesToSlide: 2,
+  },
+};
+  const buttonResponsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 3.5,
+    // slidesToSlide: 2,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3.5,
+    // slidesToSlide: 2,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 3.5,
+    // slidesToSlide: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 3.5,
+    // slidesToSlide: 2,
+  },
+};
+
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -27,7 +77,7 @@ const Workspaces = () => {
     <div className="py-[31px] px-[24px]">
       <div className={`${isVisible ? "hidden" : "block"} w-full relative`}>
         <div className="flex justify-between items-center">
-          <button>
+          <button onClick={handleGoBack}>
             <MdOutlineArrowBackIosNew size={22} />
           </button>
           <p>Explores Workspace</p>
@@ -109,29 +159,36 @@ const Workspaces = () => {
               </span>
             </Link>
           </div>
-          <div className="flex gap-3 overflow-hidden mt-[20px]">
+
+          {/* Carousel  */}
+          <Carousel
+            swipeable={true}
+            draggable={true}
+            showDots={false}
+            responsive={responsive}
+            className="flex gap-3 overflow-hidden mt-[20px]"
+          >
             {youtubersData.map((item) => (
-              <Link
-                key={item.price}
-                className="w-[158px] h-[190px] px-[8px] py-[10px] rounded-md bg-[#F4F5F7] hover:scale-[102%] transition-all ease-in-out .5s"
-              >
-                <div className="flex-shrink-0 h-">
-                  <img
-                    src={item.image}
-                    alt="item-image"
-                    className="w-[120px] h-[90px] flex-shrink-0"
-                  />
-                </div>
-                <div className="h-[77px] w-[142px] bg-white rounded-lg p-2 overflow-hidden">
-                  <p className="text-[16px] whitespace-nowrap">{item.name}</p>
-                  <p className="text-[#BA5C3D] text-[12px] font-[900]">{`USD ${item.price}.00`}</p>
-                  <div className="text-[12px] flex justify-end items-center gap-1 text-[#8A8B7A]">
-                    {item.rating} <AiFillStar color="#F2C94C" />
+              <Link key={item.price}>
+                <div className="w-[158px] h-[190px] px-[8px] py-[10px] rounded-md bg-[#F4F5F7] hover:scale-[102%] transition-all ease-in-out .5s">
+                  <div className="flex-shrink-0 h-">
+                    <img
+                      src={item.image}
+                      alt="item-image"
+                      className="w-[120px] h-[90px] flex-shrink-0"
+                    />
+                  </div>
+                  <div className="h-[77px] w-[142px] bg-white rounded-lg p-2 overflow-hidden">
+                    <p className="text-[16px] whitespace-nowrap">{item.name}</p>
+                    <p className="text-[#BA5C3D] text-[12px] font-[900]">{`USD ${item.price}.00`}</p>
+                    <div className="text-[12px] flex justify-end items-center gap-1 text-[#8A8B7A]">
+                      {item.rating} <AiFillStar color="#F2C94C" />
+                    </div>
                   </div>
                 </div>
               </Link>
             ))}
-          </div>
+          </Carousel>
         </div>
 
         <div className="border border-[#DDDDDB] rounded-md h-[203px] mt-[32px] py-[16px] px-[20px] overflow-hidden">
@@ -157,8 +214,6 @@ const Workspaces = () => {
               </Link>
             ))}
           </div>
-
-          
         </div>
 
         <div className="mt-[32px]">
@@ -170,9 +225,11 @@ const Workspaces = () => {
           </div>
         </div>
 
-        <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-4 flex items-center justify-center">
-          <img src="cart.svg" alt="" />
-        </button>
+        <Link to="/cart">
+          <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-4 flex items-center justify-center">
+            <img src="cart.svg" alt="" />
+          </button>
+        </Link>
       </div>
 
       {/* Filter pop-up  */}
