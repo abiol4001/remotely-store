@@ -48,16 +48,18 @@ const Home = () => {
         <p className="text-[21px] font-[800] w-[200px]">
           Adjustment Office Chair
         </p>
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           <p className="text-[#A6A798] text-[12px]">Hughlan Workspaces</p>
           <div className="h-1 w-1 bg-[#A6A798] rounded-full"></div>
           <p className="text-[#DDDDDB] text-[12px]">4.8</p>
           <AiFillStar color="#F2C94C" />
         </div>
         <div className="flex items-center gap-4">
-          <button className="bg-[#CED55B] rounded-md h-[42px] w-[100px]">
-            View Item
-          </button>
+          <Link to="/viewitem">
+            <button className="bg-[#CED55B] rounded-md h-[42px] w-[100px]">
+              View Item
+            </button>
+          </Link>
           <button className="bg-white rounded-full p-2">
             <img src="bag.svg" alt="" className="z-10" />
           </button>
@@ -88,9 +90,6 @@ const Home = () => {
           draggable={true}
           showDots={false}
           responsive={responsive}
-          autoPlaySpeed={1000}
-          keyBoardControl={true}
-          itemClass="carousel-item-padding-40-px"
           className=" mt-5 flex gap-2 overflow-hidden"
         >
           {workspacesData.map((item) => (
@@ -98,7 +97,7 @@ const Home = () => {
           ))}
         </Carousel>
       </div>
-
+      {/* New Arrivals */}
       <div className="mt-5">
         <div className="flex items-center justify-between">
           <h4 className="text-[21px] font-[800]">New arrivals</h4>
@@ -109,15 +108,17 @@ const Home = () => {
             </span>
           </Link>
         </div>
-        <div className="mt-4 h-[240px] overflow-hidden flex flex-col gap-3">
+        <div className="mt-4 h-[280px] overflow-y-scroll flex flex-col gap-3 ">
           {newArrivalsData.map((item) => (
             <NewArrivals key={item.name} item={item} />
           ))}
         </div>
       </div>
-      <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-5 right-5 flex items-center justify-center">
-        <img src="cart.svg" alt="" />
-      </button>
+      <Link to="/cart">
+        <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-10 right-10 md:right-[30%] lg:right-[40%] flex items-center justify-center hover:bg-gray-800">
+          <img src="cart.svg" alt="" />
+        </button>
+      </Link>
     </div>
   );
 };

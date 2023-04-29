@@ -8,8 +8,16 @@ import RelatedItem from "../../components/relatedItems/RelatedItem";
 // data import
 import workspacesData from "../../components/Workspaces/workspacesData";
 import relatedItems from "../../components/relatedItems/relatedItems";
+import { useNavigate } from "react-router-dom";
 
 const ViewItem = () => {
+
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   const totalPictures = [
     {
       id: 1,
@@ -28,7 +36,7 @@ const ViewItem = () => {
     <div className="pb-4">
       <div className="bg-[#F4F5F7] h-[421px] py-[22px] px-[24px]">
         <div className="flex justify-between items-center">
-          <button>
+          <button onClick={handleGoBack}>
             <MdOutlineArrowBackIosNew size={22} />
           </button>
           <button>

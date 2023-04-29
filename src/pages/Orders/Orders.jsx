@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Orders = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,6 +53,12 @@ const Orders = () => {
             </button>
           </div>
         </div>
+
+        <Link to="/cart">
+          <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-10 right-10 md:right-[30%] lg:right-[40%] flex items-center justify-center hover:bg-gray-800">
+            <img src="cart.svg" alt="" />
+          </button>
+        </Link>
       </div>
 
       {/* Filter pop-up */}

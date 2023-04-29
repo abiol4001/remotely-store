@@ -44,29 +44,6 @@ const Workspaces = () => {
     // slidesToSlide: 2,
   },
 };
-  const buttonResponsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 3.5,
-    // slidesToSlide: 2,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3.5,
-    // slidesToSlide: 2,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3.5,
-    // slidesToSlide: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 3.5,
-    // slidesToSlide: 2,
-  },
-};
 
 
   const [isVisible, setIsVisible] = useState(false);
@@ -74,7 +51,7 @@ const Workspaces = () => {
   const browseWorkspaces = ["Show all", "Developer", "Podcast creator", "Film making", "Photography" ]
 
   return (
-    <div className="py-[31px] px-[24px]">
+    <div className="py-[31px] px-[24px] relative">
       <div className={`${isVisible ? "hidden" : "block"} w-full relative`}>
         <div className="flex justify-between items-center">
           <button onClick={handleGoBack}>
@@ -104,7 +81,7 @@ const Workspaces = () => {
           <p className="text-[18px] font-[800] text-[#F4F5F7] w-[250px] z-10">
             Professional Gaming Assessories
           </p>
-          <Link to="" className="z-10 w-[81px]">
+          <Link to="/workspaces/developer" className="z-10 w-[81px]">
             <span className="text-[#CED55B] text-[12px] flex items-center gap-1">
               View space
               <img src="arrow-right.svg" alt="" className="h-[12px] w-[12px]" />
@@ -132,7 +109,10 @@ const Workspaces = () => {
               </span>
             </Link>
           </div>
-          <div className="flex gap-3 overflow-hidden pt-[12px]">
+          <div
+            className="flex items-center gap-3 overflow-x-scroll h-16"
+            style={{ scrollBehavior: "smooth" }}
+          >
             {browseWorkspaces.map((workspace) => (
               <button
                 key={workspace}
@@ -145,7 +125,7 @@ const Workspaces = () => {
         </div>
 
         <div>
-          <div className="flex items-center justify-between mt-[32px]">
+          <div className="flex items-center justify-between mt-[22px]">
             <h4 className="text-[18px] font-[800]">
               What <span className="text-[#BA5C3D]">YouTubers</span> search for{" "}
             </h4>
@@ -191,14 +171,17 @@ const Workspaces = () => {
           </Carousel>
         </div>
 
-        <div className="border border-[#DDDDDB] rounded-md h-[203px] mt-[32px] py-[16px] px-[20px] overflow-hidden">
+        <div className="border border-[#DDDDDB] rounded-md h-[243px] mt-[32px] py-[16px] px-[20px] overflow-hidden">
           <p className="text-[12px] font-[800]">PEOPLE SEARCH FOR</p>
-          <div>
+          <div
+            className="overflow-y-scroll h-full pt-2"
+            style={{ scrollBehavior: "smooth" }}
+          >
             {workspacesData.map((item) => (
               <Link
                 to={`/workspaces/${item.user.toLowerCase()}`}
                 key={item.price}
-                className="h-[56px] w-full rounded-md mt-2 flex gap-4 mb-4"
+                className="h-[64px] w-full rounded-md mt-2 flex items-center gap-4 mb-4 hover:bg-gray-100 hover:p-2 transition-all ease-in-out"
               >
                 <div className="w-[px] h-[px]">
                   <img
@@ -207,7 +190,7 @@ const Workspaces = () => {
                     className="w-[64px] h-[56px]"
                   />
                 </div>
-                <div className="">
+                <div className="flex flex-col justify-start">
                   <p className="text-[16px] font-[800]">{item.user}</p>
                   <p className="text-[#A6A798] text-[12px]">{`${item.suggested} suggested items`}</p>
                 </div>
@@ -226,7 +209,7 @@ const Workspaces = () => {
         </div>
 
         <Link to="/cart">
-          <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-4 flex items-center justify-center">
+          <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-10 right-10 md:right-[30%] lg:right-[40%] flex items-center justify-center">
             <img src="cart.svg" alt="" />
           </button>
         </Link>

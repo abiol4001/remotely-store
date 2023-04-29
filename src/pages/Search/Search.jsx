@@ -12,20 +12,23 @@ import browsingHistoryData from "../../components/BrowsingHistory/browsingHistor
 import { MdKeyboardArrowRight, MdOutlineArrowBackIosNew } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillStar, AiOutlineClose } from "react-icons/ai";
-
-
-
-const MIN = 10;
-const MAX = 2000;
-
+import newArrivalsData from "../../components/newArrivals/newArrivalsData";
+import SearchComp from "../../components/Search/SearchComp";
 
 const Search = () => {
+//   const [query, setQuery] = useState("");
+//   const [searchHistory, setSearchHistory] = useState([
+//     "Phone Tripod-Stand",
+//     "Fitness watch",
+//     "USB microphone recording",
+//   ]);
 
-  const [searchHistory, setSearchHistory] = useState([
-    "Phone Tripod-Stand",
-    "Fitness watch",
-    "USB microphone recording",
-  ]);
+//   const handleKeyDown = (e) => {
+//     if (e.key === "Enter") {
+//       setSearchHistory([...searchHistory, query]);
+//       setQuery("");
+//     }
+//   };
 
   const navigate = useNavigate();
 
@@ -33,18 +36,11 @@ const Search = () => {
     navigate(-1);
   };
 
-  const [values, setValues] = useState([MIN, MAX])
-
   const [isVisible, setIsVisible] = useState(false);
 
-  
   return (
     <div className="h-[822px] py-[31px] px-[24px]">
-      <div
-        className={`${
-          isVisible ? "hidden" : "block"
-        }`}
-      >
+      <div className={`${isVisible ? "hidden" : "block"}`}>
         <div className="flex justify-between items-center">
           <button onClick={handleGoBack}>
             <MdOutlineArrowBackIosNew size={22} />
@@ -52,11 +48,13 @@ const Search = () => {
           <p>Search</p>
           <div></div>
         </div>
-        <div className="mt-[24px] mb-[20px] relative">
+        {/* <div className="mt-[24px] mb-[20px] relative">
           <input
             type="text"
             placeholder="Search product name"
-            className="border border-[#C9CEDA] rounded-[5px] h-[50px] w-[100%] px-3 outline-none"
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="border border-[#C9CEDA] rounded-[5px] h-[50px] w-[100%] pl-3 pr-9 outline-none"
           />
           <button
             onClick={() => setIsVisible(!isVisible)}
@@ -65,7 +63,17 @@ const Search = () => {
             <img src="setting.svg" alt="" />
           </button>
         </div>
-        <div className="mt-[20px]">
+        <ul className={`${query.length > 2 ? "visible" : "hidden"}`}>
+          {newArrivalsData
+            .filter((item) => item.name.toLowerCase().includes(query))
+            .map((result) => (
+              <li key={result.price}>
+                <Link>{result.name}</Link>
+              </li>
+            ))}
+        </ul> */}
+        <SearchComp isVisible={isVisible} setIsVisible={setIsVisible} />
+        {/* <div className="mt-[20px]">
           <h4 className="text-[12px] text-[#A6A798] font-[900]">RECENT</h4>
           <ul className="h-[150px] w-[100%] pt-2">
             {searchHistory.map((search) => (
@@ -80,11 +88,11 @@ const Search = () => {
               </div>
             ))}
           </ul>
-        </div>
+        </div> */}
 
-        <div className="w-[100%] flex justify-center items-center mb-[30px]">
+        {/* <div className="w-[100%] flex justify-center items-center mb-[30px]">
           <hr className="h-1 w-[60%] text-[#f4f5f7]" />
-        </div>
+        </div> */}
 
         <div>
           <div className="flex items-center justify-between mb-[12px]">

@@ -51,7 +51,7 @@ export const developerItemsData = [
     name: "2.4G Optical Wireless Mouse",
     image: "/wireless-mouse.png",
     rating: "4.5",
-    price: "64",
+    price: "69",
   },
   {
     name: "Jarvis Hardwood Standing Desk",

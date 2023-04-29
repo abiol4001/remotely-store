@@ -34,7 +34,7 @@ function App() {
         <Route path='/scanning' element={<Scanning />}/>
         <Route path='/scannedinfo' element={<ScannedInfo />}/>
         <Route path='/workspaces' element={<Workspaces />}/>
-        <Route path='/workspaces/developer' element={<Workspace />}/>
+        <Route path='/workspaces/:id' element={<Workspace />}/>
       </Routes>
    </div>
   )
