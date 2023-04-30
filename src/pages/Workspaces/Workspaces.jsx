@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { MdKeyboardArrowRight, MdOutlineArrowBackIosNew } from 'react-icons/md';
 import Filter from '../../components/Filter/Filter';
 import { AiFillStar } from 'react-icons/ai';
-import { Link, useNavigate, useParams, } from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 
 import youtubersData from '../../components/youtubers/youtubersData';
 import workspacesData from '../../components/Workspaces/workspacesData';
@@ -10,6 +10,7 @@ import  { yourHistoryData } from '../../components/newArrivals/newArrivalsData';
 import NewArrivals from '../../components/newArrivals/NewArrivals';
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
+import CartIcon from '../Cart/CartIcon';
 
 
 
@@ -149,7 +150,7 @@ const Workspaces = () => {
             className="flex gap-3 overflow-hidden mt-[20px]"
           >
             {youtubersData.map((item) => (
-              <Link to={`/${item.name.split(" ")[0].toLowerCase()}`} key={item.price}>
+              <Link to={`/${item.name.split(" ").join("-").toLowerCase()}`} key={item.price}>
                 <div className="w-[158px] h-[190px] px-[8px] py-[10px] rounded-md bg-[#F4F5F7] hover:scale-[102%] transition-all ease-in-out .5s">
                   <div className="flex-shrink-0 h-">
                     <img
@@ -207,12 +208,12 @@ const Workspaces = () => {
             ))}
           </div>
         </div>
-
-        <Link to="/cart">
+        <CartIcon />
+        {/* <Link to="/cart">
           <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-10 right-10 md:right-[30%] lg:right-[40%] flex items-center justify-center">
             <img src="cart.svg" alt="" />
           </button>
-        </Link>
+        </Link> */}
       </div>
 
       {/* Filter pop-up  */}

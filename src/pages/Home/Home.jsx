@@ -55,7 +55,7 @@ const Home = () => {
           <AiFillStar color="#F2C94C" />
         </div>
         <div className="flex items-center gap-4">
-          <Link to="/adjustable">
+          <Link to="/adjustable-office-chair">
             <button className="bg-[#CED55B] rounded-md h-[42px] w-[100px]">
               View Item
             </button>

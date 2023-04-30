@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 // components import
 import peopleSearch from "../../components/PeopleSearch/peopeSearch";
 import NewArrivals from "../../components/newArrivals/NewArrivals";
@@ -11,24 +11,23 @@ import browsingHistoryData from "../../components/BrowsingHistory/browsingHistor
 // icons import
 import { MdKeyboardArrowRight, MdOutlineArrowBackIosNew } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { AiFillStar, AiOutlineClose } from "react-icons/ai";
-import newArrivalsData from "../../components/newArrivals/newArrivalsData";
+import { AiFillStar } from "react-icons/ai";
 import SearchComp from "../../components/Search/SearchComp";
 
 const Search = () => {
-//   const [query, setQuery] = useState("");
-//   const [searchHistory, setSearchHistory] = useState([
-//     "Phone Tripod-Stand",
-//     "Fitness watch",
-//     "USB microphone recording",
-//   ]);
+  //   const [query, setQuery] = useState("");
+  //   const [searchHistory, setSearchHistory] = useState([
+  //     "Phone Tripod-Stand",
+  //     "Fitness watch",
+  //     "USB microphone recording",
+  //   ]);
 
-//   const handleKeyDown = (e) => {
-//     if (e.key === "Enter") {
-//       setSearchHistory([...searchHistory, query]);
-//       setQuery("");
-//     }
-//   };
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === "Enter") {
+  //       setSearchHistory([...searchHistory, query]);
+  //       setQuery("");
+  //     }
+  //   };
 
   const navigate = useNavigate();
 
@@ -110,7 +109,7 @@ const Search = () => {
           <div className="flex gap-3 overflow-hidden">
             {browsingHistoryData.map((item) => (
               <Link
-              to=""
+                to=""
                 key={item.price}
                 className="w-[158px] h-[190px] px-[8px] py-[10px] rounded-md bg-[#F4F5F7]"
               >

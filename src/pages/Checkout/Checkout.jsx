@@ -1,6 +1,7 @@
-import React from "react";
+import { useContext, useEffect } from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -8,6 +9,8 @@ const Checkout = () => {
   const handleGoBack = () => {
     navigate(-1);
   };
+  const subTotal = localStorage.getItem("totalPrice")
+  const totalPrice = Number(subTotal) + 50
 
   return (
     <div className="py-[31px] px-[24px]">
@@ -37,7 +40,7 @@ const Checkout = () => {
       <div className="mt-[100px]">
         <div className="flex justify-between items-center">
           <p className="text-[#A6A798]">Subtotal</p>
-          <p className="text-[#8A8B7A]">$248.00</p>
+          <p className="text-[#8A8B7A]">${subTotal}</p>
         </div>
         <div className="flex justify-between items-center mt-2">
           <p className="text-[#A6A798]">Shipping cost</p>
@@ -45,11 +48,11 @@ const Checkout = () => {
         </div>
         <div className="flex justify-between items-center mt-2">
           <p className="">Total</p>
-          <p className="text-[#BA5C3D] text-[21px] font-[700]">$298.00</p>
+          <p className="text-[#BA5C3D] text-[21px] font-[700]">${totalPrice}</p>
         </div>
         <Link to="/order-confirmed" className="mt-[35px]">
           <button className="bg-[#CED55B] h-[60px] rounded-md w-full ">
-            Checkout $298.00
+            {`Checkout ${totalPrice}`}
           </button>
         </Link>
       </div>

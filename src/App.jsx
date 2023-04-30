@@ -25,7 +25,6 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<SignUp />} />
         <Route path='/home' element={<Home />} />
-        {/* <Route path='/adjustable' element={<ViewItem />} /> */}
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/order-confirmed' element={<Done />} />

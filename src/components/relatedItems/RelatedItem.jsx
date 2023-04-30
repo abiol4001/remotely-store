@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const RelatedItem = ( {item} ) => {
   return (
-    <Link to={`/${item.name.split(" ")[0].toLowerCase()}`}>
+    <Link to={`/${item.name.split(" ").join("-").toLowerCase()}`}>
     <div className="w-[188px] h-[202px] p-[12px] border border-[#DDDDDB] rounded-md">
       <div className="bg-[#F4F5F7] w-[164px] h-[86px] flex justify-center items-center rounded-md">
         <img src={`/${item.image}`} alt="item-image" className="h-[60px] w-[60px]" />

@@ -3,9 +3,10 @@ import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import Filter from "../../components/Filter/Filter";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
-import { developerItemsData } from "../../components/youtubers/youtubersData";
+import { allItemsData, developerItemsData } from "../../components/youtubers/youtubersData";
 import SearchComp from "../../components/Search/SearchComp";
 import workspacesData from "../../components/Workspaces/workspacesData";
+import CartIcon from "../Cart/CartIcon";
 
 const Workspace = () => {
 
@@ -62,17 +63,18 @@ const Workspace = () => {
             SUGGESTED ITEMS
           </h4>
           <div className="mt-[14px] flex justify-between flex-wrap gap-y-7 overflow-hidden">
-            {developerItemsData
+            {allItemsData
+              .filter((data) => user.toLowerCase() === data.category)
               .filter((result) => result.name.toLowerCase().includes(query))
               .map((item) => (
                 <Link
-                  to={`/${item.name.split(" ")[0].toLowerCase()}`}
+                  to={`/${item.name.split(" ").join("-").toLowerCase()}`}
                   key={item.price}
                   className="flex flex-col items-center max-w-[171px] h-[190px] px-[8px] py-[6px] rounded-lg bg-[#F4F5F7] hover:scale-[102%] transition-all ease-in-out .5s"
                 >
                   <div className="flex-shrink-0 h-">
                     <img
-                      src={item.image}
+                      src={`/${item.image[0]}`}
                       alt="item-image"
                       className="max-w-[110px] h-[90px] flex-shrink-0"
                     />
@@ -88,11 +90,7 @@ const Workspace = () => {
               ))}
           </div>
         </div>
-        <Link to="/cart">
-          <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-10 right-10 md:right-[30%] lg:right-[40%] flex items-center justify-center hover:bg-gray-800">
-            <img src="/cart.svg" alt="" />
-          </button>
-        </Link>
+        <CartIcon />
       </div>
 
       {/* Filter pop-up  */}

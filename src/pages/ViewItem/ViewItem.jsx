@@ -8,10 +8,18 @@ import RelatedItem from "../../components/relatedItems/RelatedItem";
 // data import
 import workspacesData from "../../components/Workspaces/workspacesData";
 import relatedItems from "../../components/relatedItems/relatedItems";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { allItemsData } from "../../components/youtubers/youtubersData";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import CartIcon from "../Cart/CartIcon";
 
 const ViewItem = () => {
+
+  const context = useContext(CartContext)
+  console.log(context)
+
+  const {dispatch, state} = context
 
   const navigate = useNavigate();
 
@@ -22,16 +30,32 @@ const ViewItem = () => {
   const { productName } = useParams()
 
   const product = allItemsData.find(
-    (item) => item.name.split(" ")[0].toLowerCase() === productName
+    (item) => item.name.split(" ").join("-").toLowerCase() === productName
   );
-  console.log(product)
 
-  const { name, price, rating, seller, image } = product
 
+  const { name, price, rating, seller, image, id } = product
+
+  const handleAdd = () => {
+    product.quantity = 1
+    dispatch({type: "ADD_TO_CART", payload: product})
+  }
+
+  const [isInCart, setIsInCart] = useState(false);
+  useEffect(() => {
+    const productInCart = state.find((product) => product.name === name);
+
+    if (productInCart) {
+      setIsInCart(true);
+    } else {
+      setIsInCart(false);
+    }
+  }, [state, isInCart]);
+  
 
   return (
     <div className="pb-4">
-      <div className="bg-[#F4F5F7] h-[421px] py-[22px] px-[24px]">
+      <div className="bg-[#F4F5F7] h-[421px] py-[22px] px-[24px] relative">
         <div className="flex justify-between items-center">
           <button onClick={handleGoBack}>
             <MdOutlineArrowBackIosNew size={22} />
@@ -52,27 +76,39 @@ const ViewItem = () => {
                 key={index}
                 className="rounded-md bg-[#ECEDDE] h-[57px] w-[60px] flex justify-center items-center border-4 border-white"
               >
-              <img key={index}
-                src={`/${image[index]}`}
-                alt={`image${index + 1}`}
-                className="h-[52px]"
-              />
+                <img
+                  key={index}
+                  src={`/${image[index]}`}
+                  alt={`image${index + 1}`}
+                  className="h-[52px]"
+                />
               </div>
             ))}
           </div>
         </div>
+        <div className="flex items-center justify-between gap-6 left-[15%] absolute bottom-[0%]">
+          <button
+            onClick={handleAdd}
+            className="bg-gray-200 h-[60px] w-[289px] rounded-md"
+          >
+            {isInCart ? "Added to cart" : "Add to cart"}
+          </button>
+          {/* <button className="bg-gray-100 p-4 rounded-full">
+            <CiHeart size={25} />
+          </button> */}
+        </div>
       </div>
 
       <div className="px-[18px] py-[18px] relative">
-        <div className="flex items-center justify-between gap-6 fixed top-[70%]">
-          <button className="bg-[#CED55B] h-[60px] w-[289px] rounded-md">
-            Add to cart
+        {/* <div className="flex items-center justify-between gap-6 absolute top-[10%]">
+          <button onClick={handleAdd} className="bg-[#CED55B] h-[60px] w-[289px] rounded-md">
+            {isInCart ?  "Added to cart" : "Add to cart"}
           </button>
           <button className="bg-gray-100 p-4 rounded-full">
             <CiHeart size={25} />
           </button>
-        </div>
-        <div className="flex gap-3 items-center mt-3">
+        </div> */}
+        <div className="flex gap-3 items-center justify-between mt-3">
           <div>
             <h4 className="text-[21px] font-[800]">{name}</h4>
             <div className="flex gap-1 items-center mt-2">
@@ -87,7 +123,7 @@ const ViewItem = () => {
             </div>
           </div>
           <div className="h-[78px] px-2 flex-shrink-0 flex flex-col items-center justify-center bg-[#F5FAF8]">
-            <p className="font-[800] text-[21px] text-[#1B3D2F]">${price}.00</p>
+            <p className="font-[800] text-[21px] text-[#1B3D2F]">${price}</p>
             <p className="font-[500] text-[12px] text-[#1B3D2F]">7% off</p>
           </div>
         </div>
@@ -105,7 +141,8 @@ const ViewItem = () => {
           </h5>
           <div className="flex overflow-x-scroll  gap-4">
             {workspacesData.map((item) => (
-              <div
+              <Link
+                to={`/workspaces/${item.user.toLowerCase()}`}
                 key={item.user}
                 className="bg-[#F4F5F7] w-[219px] h-[81px] rounded-md flex items-center pl-3 gap-3 flex-shrink-0 "
               >
@@ -120,7 +157,7 @@ const ViewItem = () => {
                   <p className="text-[16px] font-[800]">{item.user}</p>
                   <p className="text-[#A6A798] text-[12px]">{`${item.suggested} suggested items`}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -136,6 +173,7 @@ const ViewItem = () => {
           </div>
         </div>
       </div>
+      <CartIcon />
     </div>
   );
 };
