@@ -71,9 +71,9 @@ const SearchComp = ({ isVisible, setIsVisible, dataToSearch}) => {
   );
 };
 
-// SearchComp.defaultProps = {
-//   searchHistory: "",
-//   setSearchHistory: []
-// };
+SearchComp.defaultProps = {
+  searchHistory: "",
+  setSearchHistory: []
+};
 
 export default SearchComp

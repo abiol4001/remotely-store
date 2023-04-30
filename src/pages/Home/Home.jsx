@@ -55,7 +55,7 @@ const Home = () => {
           <AiFillStar color="#F2C94C" />
         </div>
         <div className="flex items-center gap-4">
-          <Link to="/viewitem">
+          <Link to="/adjustable">
             <button className="bg-[#CED55B] rounded-md h-[42px] w-[100px]">
               View Item
             </button>
@@ -93,7 +93,12 @@ const Home = () => {
           className=" mt-5 flex gap-2 overflow-hidden"
         >
           {workspacesData.map((item) => (
-            <WorkspacesComp key={item.suggested} item={item} />
+            <Link
+              to={`/workspaces/${item.user.toLowerCase()}`}
+              key={item.suggested}
+            >
+              <WorkspacesComp item={item} />
+            </Link>
           ))}
         </Carousel>
       </div>

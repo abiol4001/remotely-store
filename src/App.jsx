@@ -25,7 +25,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<SignUp />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/viewitem' element={<ViewItem />} />
+        {/* <Route path='/adjustable' element={<ViewItem />} /> */}
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/order-confirmed' element={<Done />} />
@@ -34,7 +34,8 @@ function App() {
         <Route path='/scanning' element={<Scanning />}/>
         <Route path='/scannedinfo' element={<ScannedInfo />}/>
         <Route path='/workspaces' element={<Workspaces />}/>
-        <Route path='/workspaces/:id' element={<Workspace />}/>
+        <Route path='/workspaces/:name' element={<Workspace />}/>
+        <Route path='/:productName' element={<ViewItem />}/>
       </Routes>
    </div>
   )

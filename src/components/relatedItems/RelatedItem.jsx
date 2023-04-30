@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 import { AiFillStar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const RelatedItem = ( {item} ) => {
   return (
+    <Link to={`/${item.name.split(" ")[0].toLowerCase()}`}>
     <div className="w-[188px] h-[202px] p-[12px] border border-[#DDDDDB] rounded-md">
       <div className="bg-[#F4F5F7] w-[164px] h-[86px] flex justify-center items-center rounded-md">
-        <img src={item.image} alt="item-image" className="h-[60px] w-[60px]" />
+        <img src={`/${item.image}`} alt="item-image" className="h-[60px] w-[60px]" />
       </div>
       <p className="mt-[16px]">{item.name}</p>
       <div className="flex items-center gap-2 mt-[4px] mb-[8px]">
@@ -16,6 +18,7 @@ const RelatedItem = ( {item} ) => {
       </div>
       <p className="text-[#BA5C3D] text-[16px] font-[900]">{`$${item.price}.00`}</p>
     </div>
+    </Link>
   );
 }
 

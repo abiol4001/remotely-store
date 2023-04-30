@@ -109,13 +109,14 @@ const Search = () => {
           </div>
           <div className="flex gap-3 overflow-hidden">
             {browsingHistoryData.map((item) => (
-              <div
+              <Link
+              to=""
                 key={item.price}
                 className="w-[158px] h-[190px] px-[8px] py-[10px] rounded-md bg-[#F4F5F7]"
               >
                 <div className="flex-shrink-0 h-">
                   <img
-                    src={item.image}
+                    src={`/${item.image[0]}`}
                     alt="item-image"
                     className="w-[120px] h-[90px] flex-shrink-0"
                   />
@@ -127,7 +128,7 @@ const Search = () => {
                     {item.rating} <AiFillStar color="#F2C94C" />
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

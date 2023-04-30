@@ -8,7 +8,8 @@ import RelatedItem from "../../components/relatedItems/RelatedItem";
 // data import
 import workspacesData from "../../components/Workspaces/workspacesData";
 import relatedItems from "../../components/relatedItems/relatedItems";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { allItemsData } from "../../components/youtubers/youtubersData";
 
 const ViewItem = () => {
 
@@ -18,20 +19,16 @@ const ViewItem = () => {
     navigate(-1);
   };
 
-  const totalPictures = [
-    {
-      id: 1,
-      image: "chair.png",
-    },
-    {
-      id: 2,
-      image: "chair2.png",
-    },
-    {
-      id: 3,
-      image: "chair3.png",
-    },
-  ];
+  const { productName } = useParams()
+
+  const product = allItemsData.find(
+    (item) => item.name.split(" ")[0].toLowerCase() === productName
+  );
+  console.log(product)
+
+  const { name, price, rating, seller, image } = product
+
+
   return (
     <div className="pb-4">
       <div className="bg-[#F4F5F7] h-[421px] py-[22px] px-[24px]">
@@ -40,22 +37,26 @@ const ViewItem = () => {
             <MdOutlineArrowBackIosNew size={22} />
           </button>
           <button>
-            <img src="open.svg" alt="open-icon" />
+            <img src="/open.svg" alt="open-icon" />
           </button>
         </div>
         <div className="relative w-[100%] h-[100%]">
           <img
-            src="chair.png"
+            src={`/${image[0]}`}
             alt=""
-            className="h-[308px] max-w-[40%] absolute left-[25%]"
+            className="h-[308px] max-w-[40%] absolute left-[25%] object-contain"
           />
           <div className="absolute right-2 top-[90px] flex flex-col gap-2">
-            {totalPictures.map((pic) => (
+            {[...Array(3)].map((_, index) => (
               <div
-                key={pic.id}
+                key={index}
                 className="rounded-md bg-[#ECEDDE] h-[57px] w-[60px] flex justify-center items-center border-4 border-white"
               >
-                <img src={pic.image} alt="display-image" className="h-[52px]" />
+              <img key={index}
+                src={`/${image[index]}`}
+                alt={`image${index + 1}`}
+                className="h-[52px]"
+              />
               </div>
             ))}
           </div>
@@ -73,13 +74,11 @@ const ViewItem = () => {
         </div>
         <div className="flex gap-3 items-center mt-3">
           <div>
-            <h4 className="text-[21px] font-[800]">
-              Hughlan Ergonomic Adjustable Office Chair
-            </h4>
+            <h4 className="text-[21px] font-[800]">{name}</h4>
             <div className="flex gap-1 items-center mt-2">
-              <p className="text-[#A6A798] text-[12px]">Hughlan Workspaces</p>
+              <p className="text-[#A6A798] text-[12px]">{seller}</p>
               <div className="h-1 w-1 bg-[#A6A798] rounded-full"></div>
-              <p className="text-[#1B3D2F] text-[12px]">4.8</p>
+              <p className="text-[#1B3D2F] text-[12px]">{rating}</p>
               <div className="flex">
                 {[...Array(5)].map((_, index) => (
                   <AiFillStar key={index} color="#F2C94C" />
@@ -87,23 +86,24 @@ const ViewItem = () => {
               </div>
             </div>
           </div>
-          <div className="h-[78px] w-[79px] flex-shrink-0 flex flex-col items-center justify-center bg-[#F5FAF8]">
-            <p className="font-[800] text-[21px] text-[#1B3D2F]">$113</p>
+          <div className="h-[78px] px-2 flex-shrink-0 flex flex-col items-center justify-center bg-[#F5FAF8]">
+            <p className="font-[800] text-[21px] text-[#1B3D2F]">${price}.00</p>
             <p className="font-[500] text-[12px] text-[#1B3D2F]">7% off</p>
           </div>
         </div>
 
         <p className="mt-[24px] mb-[32px] text-[#040B14]">
-          Hughlan ergonomic chair adopts an ergonomic design. This ergonomic
-          desk chair can help you ease fatigue, reduce occupational disesase and
-          let you develop good sitting posture habits
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem quod
+          sequi vitae deserunt minus enim impedit corporis excepturi et sit
+          ratione, debitis dolorum reprehenderit aspernatur, quo, recusandae
+          perferendis dolore dignissimos.
         </p>
 
         <div>
           <h5 className="text-[12px] text-[#040B14] font-[800] mb-[16px]">
             WORKSPACES ITEM CAN BE USED
           </h5>
-          <div className="flex overflow-hidden gap-4">
+          <div className="flex overflow-x-scroll  gap-4">
             {workspacesData.map((item) => (
               <div
                 key={item.user}
@@ -111,7 +111,7 @@ const ViewItem = () => {
               >
                 <div className="w-[68px] h-[65px]">
                   <img
-                    src={item.image}
+                    src={`/${item.image}`}
                     alt="item-image"
                     className="w-[68px] h-[65px]"
                   />

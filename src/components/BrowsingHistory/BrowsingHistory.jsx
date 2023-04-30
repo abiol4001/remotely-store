@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+
 import { AiFillStar } from 'react-icons/ai';
 
 const BrowsingHistory = ( { item } ) => {
   return (
     <div className="w-[158px] h-[190px] rounded-md">
       <div>
-        <img src={item.image} alt="item-image" />
+        <img src={`/${item.image[0]}`} alt="item-image" />
       </div>
       <div className="h-[77px] w-[142px]">
         <p>{item.name}</p>

@@ -1,27 +1,27 @@
 const newArrivalsData = [
   {
-    image: "watch.png",
+    image: ["watch.png", "", ""],
     name: "Smart Apple Watch SE",
     seller: "Jodde Electronics",
     rating: 4.8,
     price: 319.00,
   },
   {
-    image: "laptop.png",
+    image: ["laptop.png", "", ""],
     name: "HP Laptop - 10th generation",
     seller: "Maddy Workspaces",
     rating: 4.6,
     price: 850.00,
   },
   {
-    image: "phone.png",
-    name: "Apple iPhone X",
-    seller: "Jodde Electronics",
+    image: ["ipad.png", "", ""],
+    name: "Apple iPad",
+    seller: "Apple",
     rating: 4.8,
-    price: 429.00,
+    price: 1229.00,
   },
   {
-    image: "samsung.png",
+    image: ["samsung.png", "", ""],
     name: "Samsung Note 22",
     seller: "JD Electronics",
     rating: 4.9,
@@ -34,28 +34,28 @@ export default newArrivalsData;
 
 export const yourHistoryData = [
   {
-    image: "macbook-pro.png",
+    image: ["macbook-pro.png", "", ""],
     name: "Apple Macbook Pro 12inch",
     seller: "Apple",
     rating: 4.9,
     price: "1,499",
   },
   {
-    image: "camera.png",
+    image: ["camera.png", "", ""],
     name: "JVC Recording Camera 1500L ",
     seller: "Jodde Electronics",
     rating: 4.8,
     price: 319,
   },
   {
-    image: "ipad.png",
+    image: ["ipad.png", "", ""],
     name: "Apple iPad Pro Wifi -512GB",
     seller: "Apple",
     rating: 4.8,
     price: "1,379",
   },
   {
-    image: "laptop.png",
+    image: ["laptop.png", "", ""],
     name: "HP Laptop - 10th generation",
     seller: "Maddy Workspaces",
     rating: 4.6,

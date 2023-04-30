@@ -149,11 +149,11 @@ const Workspaces = () => {
             className="flex gap-3 overflow-hidden mt-[20px]"
           >
             {youtubersData.map((item) => (
-              <Link key={item.price}>
+              <Link to={`/${item.name.split(" ")[0].toLowerCase()}`} key={item.price}>
                 <div className="w-[158px] h-[190px] px-[8px] py-[10px] rounded-md bg-[#F4F5F7] hover:scale-[102%] transition-all ease-in-out .5s">
                   <div className="flex-shrink-0 h-">
                     <img
-                      src={item.image}
+                      src={item.image[0]}
                       alt="item-image"
                       className="w-[120px] h-[90px] flex-shrink-0"
                     />
