@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
-import ReactLoaderSpinner from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
+import { CartContext } from "../../context/CartContext";
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const {state, dispatch} = useContext(CartContext)
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGoBack = () => {
@@ -18,6 +21,12 @@ const Checkout = () => {
 
     setTimeout(() => {
       setIsLoading(false);
+      const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+      const updatedOrders = [...existingOrders, ...state];
+      localStorage.setItem("orders", JSON.stringify(updatedOrders));
+      dispatch({type: "PLACE_ORDER"})
+      navigate("/order-confirmed", { replace: true });
+
     }, 4000);
   }
 
@@ -57,25 +66,26 @@ const Checkout = () => {
         </div>
         <div className="flex justify-between items-center mt-2">
           <p className="">Total</p>
-          <p className="text-[#BA5C3D] text-[21px] font-[700]">${totalPrice}</p>
+          <p className="text-[#BA5C3D] text-[21px] font-[700]">${totalPrice.toFixed(2)}</p>
         </div>
         {/* <Link to="/order-confirmed" className="mt-[35px]"> */}
         <button
           disabled={isLoading}
           onClick={placeOrder}
-          className="bg-[#CED55B] h-[60px] rounded-md w-full disabled:bg-gray-300 disabled:cursor-not-allowed "
+          className="bg-[#CED55B] mt-[35px] h-[60px] rounded-md w-full disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center"
         >
           {isLoading ? (
-            <ReactLoaderSpinner
-              type="Oval"
-              color="#00BFFF"
-              height={80}
-              width={80}
+            <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="50"
+              visible={true}
             />
           ) : (
-            "Checkout"
-          )}
-          {/* {`Checkout $${totalPrice}`} */}
+            "Checkout" 
+            )}
+            {/* {`Checkout $${totalPrice}`} */}
         </button>
         {/* </Link> */}
       </div>

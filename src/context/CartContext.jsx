@@ -44,6 +44,8 @@ export const CartContextProvider = ({ children }) => {
               (item) => action.payload.id !== item.id
             );
             return tempState3;
+        case "PLACE_ORDER":
+            return []
           default:
             return state;
         }

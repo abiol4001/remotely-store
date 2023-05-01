@@ -23,7 +23,7 @@ const Filter = ({ visibility }) => {
 
 
   return (
-    <div className='mx-auto transition-all duration-1000 ease-in'>
+    <div className='mx-auto '>
       <div className="flex justify-between mb-[21px]">
         <h4 className="text-[21px] font-[800]">Filter by</h4>
         <button onClick={visibility}>

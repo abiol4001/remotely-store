@@ -1,7 +1,7 @@
 // icon import
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
-import { CiHeart } from "react-icons/ci";
+// import { CiHeart } from "react-icons/ci";
 // component import
 import RelatedItem from "../../components/relatedItems/RelatedItem";
 
@@ -34,7 +34,7 @@ const ViewItem = () => {
   );
 
 
-  const { name, price, rating, seller, image, id } = product
+  const { name, price, rating, seller, image, } = product
 
   const handleAdd = () => {
     product.quantity = 1

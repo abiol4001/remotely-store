@@ -1,19 +1,11 @@
-import { useContext, useState} from "react";
+import { useContext} from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { Link, useNavigate, } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { state, dispatch } = useContext(CartContext);
-
-  // const [isEmpty, setIsEmpty] = useState(false)
-
-  // if(state.length < 1) {
-  //   setIsEmpty(true)
-  // } else {
-  //   setIsEmpty(false)
-  // }
+  const { state, dispatch } = useContext(CartContext)
 
 
   const handleGoBack = () => {
@@ -35,9 +27,15 @@ const Cart = () => {
 
   return (
     <div className="py-[31px] px-[24px] h-[850px] overflow-y-scroll flex flex-col relative">
-      <button onClick={handleGoBack}>
-        <MdOutlineArrowBackIosNew size={22} />
-      </button>
+      <div className="flex justify-between items-center">
+        <button onClick={handleGoBack}>
+          <MdOutlineArrowBackIosNew size={22} />
+        </button>
+        <div className="flex gap-2">
+          <Link to="/home">Home</Link>
+          <Link to="/orders">Orders</Link>
+        </div>
+      </div>
       <div className="flex justify-between items-center mt-5 mb-[25px]">
         <h4 className="text-[21px] font-[800]">Your Cart</h4>
         <p className="text-[#A6A798] text-[12px]">{totalItems} items</p>
@@ -114,8 +112,11 @@ const Cart = () => {
           </div>
         )}
 
-        <Link to="/checkout" className="mt-10">
-          <button disabled={state.length < 1} className="bg-[#CED55B] h-[60px] rounded-md w-full disabled:cursor-not-allowed disabled:bg-gray-300 transition-all ease-out duration-500">
+        <Link to="/checkout" className="">
+          <button
+            disabled={state.length < 1}
+            className="mt-10 bg-[#CED55B] h-[60px] rounded-md w-full disabled:cursor-not-allowed disabled:bg-gray-300 transition-all ease-out duration-500"
+          >
             Proceed to Checkout
           </button>
         </Link>
