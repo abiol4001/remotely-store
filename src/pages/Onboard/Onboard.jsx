@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Onboard = () => {
   return (
-    <div className="bg-[url('onboard.png')] bg-cover bg-center h-[896px] relative flex flex-col items-center justify-end px-[32px] py-[30px]">
+    <div className="bg-[url('/onboard.png')] bg-cover bg-center h-[896px] relative flex flex-col items-center justify-end px-[32px] py-[30px]">
       <div className="h-[238px] max-w-[414px] absolute bottom-0 left-0 backdrop-filter backdrop-blur-sm"></div>
       <div className="z-10">
         <p className="text-[#CED55B] text-[12px] font-[800]">WELCOME</p>
