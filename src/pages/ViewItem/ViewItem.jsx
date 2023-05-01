@@ -40,6 +40,20 @@ const ViewItem = () => {
     product.quantity = 1
     dispatch({type: "ADD_TO_CART", payload: product})
   }
+  // useEffect(() => {
+  //   const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+  //   const updatedCart = state.forEach((item) => {
+  //     if (existingCart.includes(item)) {
+  //       console.log("existed checked");
+  //       return existingCart;
+  //     } else {
+  //       console.log("Not existed checked");
+  //       return [...existingCart, item];
+  //     }
+  //   });
+  //   localStorage.setItem("orders", JSON.stringify(updatedCart));
+  // }, [state])
+
 
   const [isInCart, setIsInCart] = useState(false);
   useEffect(() => {
