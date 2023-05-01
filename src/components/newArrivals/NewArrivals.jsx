@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const NewArrivals = ( {item} ) => {
   return (
-    <Link to={`/${item.name.split(" ").join("-").toLowerCase()}`} className="border border-[#DDDDDB] rounded-md flex h-[110px] p-[12px] gap-3 hover:scale-[1.05] transition-all duration-100 ease-linear">
+    <Link to={`/${item.name.split(" ").join("-").toLowerCase()}`} className="border border-[#DDDDDB] rounded-md flex h-[110px] p-[12px] gap-3 hover:scale-[1.05] transition-all duration-100 ease-linear z-10 bg-white">
       <div className="bg-[#F4F5F7] w-[100px] h-[86px] flex flex-shrink-0 items-center justify-center">
         <img src={`/${item.image[0]}`} alt="item-image" className='h-[70%] object-fill'  />
       </div>
@@ -19,7 +19,7 @@ const NewArrivals = ( {item} ) => {
           <p className="text-[#DDDDDB] text-[12px]">{item.rating}</p>
           <AiFillStar color="#F2C94C" />
         </div>
-        <p className="text-[#BA5C3D] text-[16px] font-[900]">{`$${item.price}.00`}</p>
+        <p className="text-[#BA5C3D] text-[16px] font-[900]">{`$${item.price}`}</p>
       </div>
     </Link>
   );

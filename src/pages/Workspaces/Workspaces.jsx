@@ -11,6 +11,7 @@ import NewArrivals from '../../components/newArrivals/NewArrivals';
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import CartIcon from '../Cart/CartIcon';
+import SearchComp from '../../components/Search/SearchComp';
 
 
 
@@ -61,7 +62,7 @@ const Workspaces = () => {
           <p>Explores Workspace</p>
           <div></div>
         </div>
-        <div className="mt-[24px] mb-[20px] relative">
+        {/* <div className="mt-[24px] mb-[20px] relative">
           <input
             type="text"
             placeholder="Search product name"
@@ -73,9 +74,13 @@ const Workspaces = () => {
           >
             <img src="setting.svg" alt="filter-image" />
           </button>
+        </div> */}
+        <div className=''>
+        <SearchComp isVisible={isVisible} setIsVisible={setIsVisible} />
+
         </div>
 
-        <div className="bg-[#0A0B02] text-white h-[192px] rounded-[30px] py-[25px] px-[15px] flex flex-col justify-between relative">
+        <div className="bg-[#0A0B02] text-white h-[192px] rounded-[30px] py-[25px] px-[15px] flex flex-col justify-between relative z-0">
           <p className="text-[12px] font-[800] text-[#C1C2B8] z-10">
             FEATURED WORKSPACE
           </p>
@@ -150,7 +155,10 @@ const Workspaces = () => {
             className="flex gap-3 overflow-hidden mt-[20px]"
           >
             {youtubersData.map((item) => (
-              <Link to={`/${item.name.split(" ").join("-").toLowerCase()}`} key={item.price}>
+              <Link
+                to={`/${item.name.split(" ").join("-").toLowerCase()}`}
+                key={item.price}
+              >
                 <div className="w-[158px] h-[190px] px-[8px] py-[10px] rounded-md bg-[#F4F5F7] hover:scale-[102%] transition-all ease-in-out .5s">
                   <div className="flex-shrink-0 h-">
                     <img
@@ -209,11 +217,6 @@ const Workspaces = () => {
           </div>
         </div>
         <CartIcon />
-        {/* <Link to="/cart">
-          <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-10 right-10 md:right-[30%] lg:right-[40%] flex items-center justify-center">
-            <img src="cart.svg" alt="" />
-          </button>
-        </Link> */}
       </div>
 
       {/* Filter pop-up  */}

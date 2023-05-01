@@ -55,7 +55,7 @@ const ViewItem = () => {
 
   return (
     <div className="pb-4">
-      <div className="bg-[#F4F5F7] h-[421px] py-[22px] px-[24px] relative">
+      <div className="bg-[#F4F5F7] h-[451px] py-[22px] px-[24px] relative">
         <div className="flex justify-between items-center">
           <button onClick={handleGoBack}>
             <MdOutlineArrowBackIosNew size={22} />
@@ -86,10 +86,10 @@ const ViewItem = () => {
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-between gap-6 left-[15%] absolute bottom-[0%]">
+        <div className="flex items-center justify-between gap-6 right-[0px] absolute bottom-[0%]">
           <button
             onClick={handleAdd}
-            className="bg-gray-200 h-[60px] w-[289px] rounded-md"
+            className="bg-gray-200 h-[60px] w-[415px] rounded-md hover:bg-slate-500 hover:text-gray-200 transition-all duration-300"
           >
             {isInCart ? "Added to cart" : "Add to cart"}
           </button>

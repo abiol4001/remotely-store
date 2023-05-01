@@ -1,34 +1,46 @@
-import { useContext} from "react";
+import { useContext, useState} from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { Link, useNavigate, } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 const Cart = () => {
   const navigate = useNavigate();
-
   const { state, dispatch } = useContext(CartContext);
+
+  // const [isEmpty, setIsEmpty] = useState(false)
+
+  // if(state.length < 1) {
+  //   setIsEmpty(true)
+  // } else {
+  //   setIsEmpty(false)
+  // }
+
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
+  let totalItems = state.reduce((total, item) => {
+    return total + item.quantity;
+  }, 0);
+
   const total = state.reduce((total, item) => {
     const num = Number(item.price)
     localStorage.setItem(
       "totalPrice",
-      (total + num * item.quantity).toFixed(2)
+      (total + num * item.quantity)
     );
-    return (total + (num * item.quantity)).toFixed(2);
+    return (total + (num * item.quantity));
   },0)
 
   return (
-    <div className="py-[31px] px-[24px] h-[896px] overflow-y-scroll flex flex-col relative">
+    <div className="py-[31px] px-[24px] h-[850px] overflow-y-scroll flex flex-col relative">
       <button onClick={handleGoBack}>
         <MdOutlineArrowBackIosNew size={22} />
       </button>
       <div className="flex justify-between items-center mt-5 mb-[25px]">
         <h4 className="text-[21px] font-[800]">Your Cart</h4>
-        <p className="text-[#A6A798] text-[12px]">{state.length} items</p>
+        <p className="text-[#A6A798] text-[12px]">{totalItems} items</p>
       </div>
 
       {/* Cart item comp */}
@@ -95,15 +107,15 @@ const Cart = () => {
       </div>
 
       <div className="mt-auto">
-          {state.length > 0 && (
-        <div className="flex justify-between">
-          <p>Total</p>
-            <p className="text-[21px] text-[#BA5C3D]">{total}</p>
-        </div>
-          )}
+        {state.length > 0 && (
+          <div className="flex justify-between">
+            <p>Total</p>
+            <p className="text-[21px] text-[#BA5C3D]">{total.toFixed(2)}</p>
+          </div>
+        )}
 
         <Link to="/checkout" className="mt-10">
-          <button className="bg-[#CED55B] h-[60px] rounded-md w-full">
+          <button disabled={state.length < 1} className="bg-[#CED55B] h-[60px] rounded-md w-full disabled:cursor-not-allowed disabled:bg-gray-300 transition-all ease-out duration-500">
             Proceed to Checkout
           </button>
         </Link>

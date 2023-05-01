@@ -1,16 +1,25 @@
-import { useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
+import ReactLoaderSpinner from "react-loader-spinner";
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleGoBack = () => {
     navigate(-1);
   };
-  const subTotal = localStorage.getItem("totalPrice")
-  const totalPrice = Number(subTotal) + 50
+  const subTotal = localStorage.getItem("totalPrice");
+  const totalPrice = Number(subTotal) + 50;
+
+  function placeOrder() {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 4000);
+  }
 
   return (
     <div className="py-[31px] px-[24px]">
@@ -40,7 +49,7 @@ const Checkout = () => {
       <div className="mt-[100px]">
         <div className="flex justify-between items-center">
           <p className="text-[#A6A798]">Subtotal</p>
-          <p className="text-[#8A8B7A]">${subTotal}</p>
+          <p className="text-[#8A8B7A]">${Number(subTotal).toFixed(2)}</p>
         </div>
         <div className="flex justify-between items-center mt-2">
           <p className="text-[#A6A798]">Shipping cost</p>
@@ -50,11 +59,25 @@ const Checkout = () => {
           <p className="">Total</p>
           <p className="text-[#BA5C3D] text-[21px] font-[700]">${totalPrice}</p>
         </div>
-        <Link to="/order-confirmed" className="mt-[35px]">
-          <button className="bg-[#CED55B] h-[60px] rounded-md w-full ">
-            {`Checkout ${totalPrice}`}
-          </button>
-        </Link>
+        {/* <Link to="/order-confirmed" className="mt-[35px]"> */}
+        <button
+          disabled={isLoading}
+          onClick={placeOrder}
+          className="bg-[#CED55B] h-[60px] rounded-md w-full disabled:bg-gray-300 disabled:cursor-not-allowed "
+        >
+          {isLoading ? (
+            <ReactLoaderSpinner
+              type="Oval"
+              color="#00BFFF"
+              height={80}
+              width={80}
+            />
+          ) : (
+            "Checkout"
+          )}
+          {/* {`Checkout $${totalPrice}`} */}
+        </button>
+        {/* </Link> */}
       </div>
     </div>
   );
@@ -62,29 +85,29 @@ const Checkout = () => {
 
 export default Checkout;
 
-export const Card = ( {card} ) => {
-    return (
-      <div
-        className="border hover:border-[#8ADD4B] border-[#DDDDDB] h-[50px] w-full rounded-xl flex items-center justify-between p-[18px]"
-        id="selectable-div"
-      >
-        <div className="flex gap-5 items-center ">
-          <img src="visa.png" alt="visa-logo" className="h-3 w-9" />
-          <p>Bank</p>
-          <div className="flex gap-1">
-            <div className="h-1.5 w-1.5 rounded-full bg-[#A6A798]"></div>
-            <div className="h-1.5 w-1.5 rounded-full bg-[#A6A798]"></div>
-            <div className="h-1.5 w-1.5 rounded-full bg-[#A6A798]"></div>
-            <div className="h-1.5 w-1.5 rounded-full bg-[#A6A798]"></div>
-          </div>
-          <p className="text-[#A6A798]">1234</p>
+export const Card = ({ card }) => {
+  return (
+    <div
+      className="border hover:border-[#8ADD4B] border-[#DDDDDB] h-[50px] w-full rounded-xl flex items-center justify-between p-[18px]"
+      id="selectable-div"
+    >
+      <div className="flex gap-5 items-center ">
+        <img src="visa.png" alt="visa-logo" className="h-3 w-9" />
+        <p>Bank</p>
+        <div className="flex gap-1">
+          <div className="h-1.5 w-1.5 rounded-full bg-[#A6A798]"></div>
+          <div className="h-1.5 w-1.5 rounded-full bg-[#A6A798]"></div>
+          <div className="h-1.5 w-1.5 rounded-full bg-[#A6A798]"></div>
+          <div className="h-1.5 w-1.5 rounded-full bg-[#A6A798]"></div>
         </div>
-        <input
-          type="radio"
-          name="option2"
-          id="option2"
-          className="h-[14px] w-[14px]"
-        />
+        <p className="text-[#A6A798]">1234</p>
       </div>
-    );
-}
+      <input
+        type="radio"
+        name="option2"
+        id="option2"
+        className="h-[14px] w-[14px]"
+      />
+    </div>
+  );
+};

@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import newArrivalsData from '../newArrivals/newArrivalsData';
 import { Link } from 'react-router-dom';
 import { AiOutlineClose } from 'react-icons/ai';
+import { allItemsData } from '../youtubers/youtubersData';
+import NewArrivals from '../newArrivals/NewArrivals';
 
-const SearchComp = ({ isVisible, setIsVisible, dataToSearch}) => {
+const SearchComp = ({ isVisible, setIsVisible,}) => {
   const [query, setQuery] = useState("");
 
   const handleKeyDown = (e) => {
@@ -38,16 +40,16 @@ const SearchComp = ({ isVisible, setIsVisible, dataToSearch}) => {
           <img src="/setting.svg" alt="" />
         </button>
       </div>
-      <ul className={`${query.length > 2 ? "visible" : "hidden"}`}>
-        {dataToSearch && (
-          dataToSearch.filter((item) => item.name.toLowerCase().includes(query))
+      <ul className={`${query.length > 2 ? "visible" : "hidden"} bg-white absolute top-[7%] z-10`}>
+        {
+          allItemsData.filter((item) => item.name.toLowerCase().includes(query))
           .map((result) => (
-            <li key={result.price}>
-              <Link>{result.name}</Link>
+            <li key={result.id}>
+              <NewArrivals item={result} />
             </li>
-          )))}
+          ))}
 
-        <div className="mt-[20px]">
+        <div className="mt-[20px] z-10 bg-white">
           <h4 className="text-[12px] text-[#A6A798] font-[900]">RECENT</h4>
           <ul className="h-[150px] w-[100%] pt-2">
             {searchHistory.map((search) => (
@@ -55,7 +57,7 @@ const SearchComp = ({ isVisible, setIsVisible, dataToSearch}) => {
                 key={search}
                 className="flex items-center justify-between mb-2"
               >
-                <li>{search}</li>
+                <li onClick={() => setQuery(search)}>{search}</li>
                 <button>
                   <AiOutlineClose color="#C1C2B8" />
                 </button>

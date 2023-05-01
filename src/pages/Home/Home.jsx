@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import responsive from "../../components/carouselResponsive/carouselResponsive";
+import CartIcon from "../Cart/CartIcon";
 
 const Home = () => {
 
@@ -119,11 +120,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <Link to="/cart">
-        <button className="bg-black rounded-full h-[60px] w-[60px] fixed bottom-10 right-10 md:right-[30%] lg:right-[40%] flex items-center justify-center hover:bg-gray-800">
-          <img src="cart.svg" alt="" />
-        </button>
-      </Link>
+      <CartIcon />
     </div>
   );
 };
